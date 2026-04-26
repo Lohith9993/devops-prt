@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prt-nginx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prt-nginx
+  template:
+    metadata:
+      labels:
+        app: prt-nginx
+    spec:
+      containers:
+      - name: prt-nginx
+        image: prt-nginx:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
